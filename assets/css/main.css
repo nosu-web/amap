@@ -1,0 +1,37 @@
+#mapid {
+    height: calc(100vh - 56px);
+}
+
+.toggle-btn {
+    font-size: xx-large;
+    margin-left: -275px;
+    border-radius: 7px;
+    z-index: 1000;
+}
+
+.toggle-btn-closed {
+    margin-left: -25px;
+}
+
+.sidebar {
+    position: absolute;
+    background-color: azure;
+    width: 250px;
+    margin-top: 56px;
+    height: calc(100vh - 56px);
+    top: 0;
+    right: 0;
+    z-index: 1001;
+}
+
+@media (max-width: 576px) {
+    .toggle-btn {
+        margin-left: -25px;
+    }
+    .toggle-btn-closed {
+        margin-left: -275px;
+    }
+    .sidebar {
+        display: none;
+    }
+}
