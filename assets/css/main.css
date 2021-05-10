@@ -26,10 +26,10 @@
 
 @media (max-width: 576px) {
     .toggle-btn {
-        margin-left: -25px;
+        margin-left: -29px;
     }
     .toggle-btn-closed {
-        margin-left: -275px;
+        margin-left: -279px;
     }
     .sidebar {
         display: none;
