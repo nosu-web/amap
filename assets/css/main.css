@@ -4,13 +4,13 @@
 
 .toggle-btn {
     font-size: xx-large;
-    margin-left: -275px;
-    border-radius: 7px;
+    margin-left: -279px;
+    border-radius: 7px 0 0 7px;
     z-index: 1000;
 }
 
 .toggle-btn-closed {
-    margin-left: -25px;
+    margin-left: -29px;
 }
 
 .sidebar {
