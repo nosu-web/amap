@@ -7,13 +7,6 @@ require("includes/mysqli.inc.php");
 
 /* Проверка авторизации */
 require("includes/auth.inc.php");
-
-/* Если нажата кнопка войти */
-if(isset($_POST["addSubmit"]))
-{
-  $name = $_POST["name"];
-  $description = $_POST["description"];
-}
 ?>
 <!doctype html>
 <html lang="ru">
@@ -23,6 +16,8 @@ if(isset($_POST["addSubmit"]))
     
     <!-- CSS -->
     <?php require("templates/styles.tpl.php"); ?>
+    <link rel="stylesheet" href="vendor/leaflet-1.7.1/dist/leaflet.css">
+
     <title>aMap</title>
   </head>
   <body>
@@ -34,6 +29,8 @@ if(isset($_POST["addSubmit"]))
     </main>
     <!-- JAVASCRIPT -->
     <?php require("templates/scripts.tpl.php"); ?>
+    <script src="vendor/leaflet-1.7.1/dist/leaflet.js"></script>
+  
   </body>
 </html>
 <?php
