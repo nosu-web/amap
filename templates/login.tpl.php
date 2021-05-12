@@ -1,6 +1,6 @@
 <div class="container my-5">
     <form class="form-auth mx-auto" action="login.php" method="post">
-        <?=$loginError?>
+        <?=$formError?>
         <div class="mb-3">
             <label for="email" class="form-label">E-mail</label>
             <input type="email" name="email" class="form-control" id="email">
