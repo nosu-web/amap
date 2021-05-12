@@ -27,7 +27,7 @@ require("includes/mysqli.inc.php");
     <!-- JAVASCRIPT -->
     <?php require("templates/scripts.tpl.php"); ?>
     <script src="vendor/leaflet-1.7.1/dist/leaflet.js"></script>
-    <script src="assets/js/main.js"></script>
+    <script src="assets/js/map.js"></script>
   </body>
 </html>
 <?php
