@@ -16,10 +16,17 @@ if (isset($_POST["addSubmit"])) {
     $polygonDensity = $_POST["polygonDensity"];
     $polygonPoints = $_POST["polygonPoints"];
 
+    $polygonJS = "";
     if (!empty($polygonDensity) && !empty($polygonPoints)) {
-        echo "$polygonDescription $polygonDensity $polygonPoints";
+        $polygonJS = "
+        <script>
+            var polygon = L.polygon([{$polygonPoints}], {color: 'red'}).addTo(map);
+            // zoom the map to the polygon
+            map.fitBounds(polygon.getBounds());
+        </script>";
     } else
         $formError = "Добавьте участок на карту и выберите плотность кустов";
+
     if (!empty($formError))
         $formError = '<div class="alert alert-danger" role="alert">' . $formError . '</div>';
 }
@@ -50,6 +57,7 @@ if (isset($_POST["addSubmit"])) {
     <script src="vendor/leaflet-1.7.1/dist/leaflet.js"></script>
     <script src="vendor/leaflet.FreeDraw-2.13.4/dist/leaflet-freedraw.iife.js"></script>
     <script src="assets/js/map_draw.js"></script>
+    <?= $polygonJS ?>
 </body>
 
 </html>
