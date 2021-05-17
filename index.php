@@ -4,6 +4,9 @@ require("config/common.php");
 
 /* Подключение к БД */
 require("includes/mysqli.inc.php");
+
+/* Проверка авторизации */
+require("includes/auth.inc.php");
 ?>
 <!doctype html>
 <html lang="ru">
