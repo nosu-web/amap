@@ -2,6 +2,10 @@
     height: calc(100vh - 56px);
 }
 
+#map_draw {
+    height: 300px;
+}
+
 .toggle-btn {
     font-size: xx-large;
     margin-left: -279px;
