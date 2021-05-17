@@ -47,7 +47,7 @@ if(isset($_POST["loginSubmit"]))
     
     <!-- CSS -->
     <?php require("templates/styles.tpl.php"); ?>
-    <title>aMap</title>
+    <title><?=SITE_NAME?></title>
   </head>
   <body>
     <!-- HEADER -->

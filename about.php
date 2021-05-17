@@ -5,8 +5,8 @@ require("config/common.php");
 /* Подключение к БД */
 require("includes/mysqli.inc.php");
 
-/* Проверка авторизации */
-require("includes/auth.inc.php");
+/* Стартуем сессию */
+session_start();
 ?>
 <!doctype html>
 <html lang="ru">
@@ -16,7 +16,6 @@ require("includes/auth.inc.php");
     
     <!-- CSS -->
     <?php require("templates/styles.tpl.php"); ?>
-    <link rel="stylesheet" href="vendor/leaflet-1.7.1/dist/leaflet.css">
 
     <title><?=SITE_NAME?></title>
   </head>
@@ -25,11 +24,10 @@ require("includes/auth.inc.php");
     <?php require("templates/header.tpl.php"); ?>
     <main class="container-fluid">
       <!-- PAGE -->
-      <?php require("templates/add.tpl.php"); ?>
+      <?php require("templates/about.tpl.php"); ?>
     </main>
     <!-- JAVASCRIPT -->
     <?php require("templates/scripts.tpl.php"); ?>
-    <script src="vendor/leaflet-1.7.1/dist/leaflet.js"></script>
   
   </body>
 </html>
