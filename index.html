@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>MOODMETER</title>
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="css/main.css">
+	<meta charset="utf-8">
+</head>
+<body class="page">
+  <h1>MOODMETER</h1>
+  <form action="save.php" method="post">
+  	  <div class="buttons buttons__sex">
+		  <input type="radio" id="sex1" name="sex" value="male" required>
+		  <label for="sex1">👦</label>
+
+		  <input type="radio" id="sex2" name="sex" value="female" required>
+		  <label for="sex2">👧</label>
+	  </div>
+	  <div class="buttons">
+		<div class="buttons__mood">
+			<span class="buttons__face">😔</span>
+			<span class="buttons__face">😟</span>
+			<span class="buttons__face">😐</span>
+			<span class="buttons__face">🙂</span>
+			<span class="buttons__face">😊</span>
+		</div>
+	  	<input type="range" class="buttons__scale" name="mood" min="1" max="5" step="0.1">
+	  </div>
+	  <div class="buttons">
+	  	<button class="buttons__save">👌</button>
+	  </div>
+  </form>
+</body>
+</html>
