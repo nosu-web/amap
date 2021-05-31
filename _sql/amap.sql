@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Май 31 2021 г., 18:46
+-- Время создания: Май 31 2021 г., 19:11
 -- Версия сервера: 10.4.12-MariaDB
 -- Версия PHP: 7.3.26
 
@@ -26,11 +26,12 @@ SET time_zone = "+00:00";
 --
 -- Структура таблицы `polygons`
 --
-
+DROP TABLE IF EXISTS `polygon`;
+DROP TABLE IF EXISTS `polygons`;
 CREATE TABLE `polygons` (
   `id` int(11) NOT NULL,
-  `name` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `coordinates` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `description` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `points` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `density` int(11) NOT NULL,
   `status_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -41,6 +42,7 @@ CREATE TABLE `polygons` (
 -- Структура таблицы `statuses`
 --
 
+DROP TABLE IF EXISTS `statuses`;
 CREATE TABLE `statuses` (
   `id` int(11) NOT NULL,
   `name` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL
@@ -61,6 +63,7 @@ INSERT INTO `statuses` (`id`, `name`) VALUES
 -- Структура таблицы `users`
 --
 
+DROP TABLE IF EXISTS `users`;
 CREATE TABLE `users` (
   `id` int(11) NOT NULL,
   `name` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
