@@ -8,23 +8,32 @@ require("includes/mysqli.inc.php");
 /* Проверка авторизации */
 require("includes/auth.inc.php");
 
+/* Получаем статусы из таблицы statuses и формируем options для select */
+$statusOptions = "";
+$result = $mysqli->query("SELECT * FROM statuses");
+while($row = $result->fetch_assoc()){
+  $statusId = $row["id"];
+  $statusName = $row["name"];
+  $statusOptions .= "<option value=\"$statusId\">$statusName</option>";
+}
+
 if (isset($_POST["addSubmit"])) {
     $formError = "";
 
-    /* Получаем данные из формы */
-    $polygonDescription = $_POST["polygonDescription"];
-    $polygonDensity = $_POST["polygonDensity"];
-    $polygonPoints = $_POST["polygonPoints"];
+    /* Получаем данные из формы и экранирует специальные символы в строке */
+    $polygonDescription = $mysqli->real_escape_string($_POST["polygonDescription"]);
+    $polygonPoints = $mysqli->real_escape_string($_POST["polygonPoints"]);
+    $polygonDensity = $mysqli->real_escape_string($_POST["polygonDensity"]);
+    $polygonStatus = $mysqli->real_escape_string($_POST["polygonStatus"]);
 
     $polygonJS = "";
     if (!empty($polygonDensity) && !empty($polygonPoints)) {
-        $polygonJS = "
-        <script>
-            var polygon = L.polygon([{$polygonPoints}], {color: 'red'}).addTo(map);
-            // zoom the map to the polygon
-            map.fitBounds(polygon.getBounds());
-        </script>";
-    } else
+        $result = $mysqli->query("INSERT INTO `polygons`(`description`, `points`, `density`, `status_id`) VALUES ('$polygonDescription','$polygonPoints','$polygonDensity','$polygonStatus')");
+        if($result)
+          header("Location: index.php");
+        else
+          $formError = "Ошибка добавления участка в БД";
+      } else
         $formError = "Добавьте участок на карту и выберите плотность кустов";
 
     if (!empty($formError))
