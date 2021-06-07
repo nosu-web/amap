@@ -1,4 +1,4 @@
-$(".toggle-btn").click(function() {
+$(".toggle-btn").click(function () {
     $(".toggle-btn").toggleClass("toggle-btn-closed");
     $(".sidebar").toggle();
 });
@@ -13,3 +13,46 @@ L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_toke
     zoomOffset: -1,
     accessToken: 'your.mapbox.access.token'
 }).addTo(map);
+
+
+$.getJSON("api.php", function (data) {
+    var bootstrapClass;
+    var polygonColor;
+    L.geoJSON(data,
+        {
+            onEachFeature: function (feature, layer) {
+
+                switch (feature.properties.statusID) {
+                    case '1':
+                        bootstrapClass = 'bg-danger';
+                        polygonColor = 'red';
+                        break;
+                    case '2':
+                        bootstrapClass = 'bg-warning';
+                        polygonColor = 'yellow';
+                        break;
+                    case '3':
+                        bootstrapClass = 'bg-success';
+                        polygonColor = 'green';
+                        break;
+
+                    default:
+                        bootstrapClass = 'bg-primary';
+                        polygonColor = 'blue';
+                        break;
+                }
+
+                layer.bindPopup(
+                    '<div class="card">'+
+                        '<div class="card-body">'+
+                            '<h5 class="card-title">' + feature.properties.description + '</h5>'+
+                            '<p class="card-text">Статус: ' + feature.properties.status + '</p>'+
+                            '<p class="card-text">Плотность: ' + feature.properties.density + '</p>'+
+                            '<p class="card-text text-muted">Добавлено: ' + feature.properties.created + '</p>'+
+                        '</div>'+
+                    '</div>'
+                );
+                layer.setStyle({color: polygonColor});
+            }
+        }).addTo(map);
+});

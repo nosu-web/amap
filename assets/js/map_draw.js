@@ -22,8 +22,8 @@ freeDraw.on('markers', event => {
 
     objectArray.forEach(([key, value]) => {
         value.forEach(function(element) {
-            polygonPoints.push('[' + element.lat + ',' + element.lng + ']');
+            polygonPoints.push('[' + element.lng + ',' + element.lat + ']');
         })
     });
-    document.querySelector('#polygonPoints').value = polygonPoints;
+    document.querySelector('#polygonPoints').value = '[[' + polygonPoints + ']]';
 });
