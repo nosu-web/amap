@@ -5,9 +5,20 @@ require("config/common.php");
 /* Подключение к БД */
 require("includes/mysqli.inc.php");
 
+
+if(isset($_GET["density"]))
+{
+    $density = $_GET["density"];
+    $sql = "SELECT * FROM polygons, statuses WHERE polygons.status_id=statuses.id AND polygons.density=$density";
+}
+else
+    $sql = "SELECT * FROM polygons, statuses WHERE polygons.status_id=statuses.id";
+
+   
+    
 /* Получаем статусы из таблицы statuses и формируем options для select */
 $statusOptions = "";
-$result = $mysqli->query("SELECT * FROM polygons, statuses WHERE polygons.status_id=statuses.id");
+$result = $mysqli->query($sql);
 while($row = $result->fetch_assoc()){
     $polygonDescription = $row["description"];
     $polygonPoints = $row["points"];
